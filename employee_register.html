@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1>Employee Registration</h1>
+    <form class = "registration" action="" method="POST" novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.employee_id.label() }}
+        {{ form.employee_id() }}
+        {% for error in form.employee_id.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.hidden_tag() }}
+        {{ form.password.label() }}
+        {{ form.password() }}
+        {% for error in form.password.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.hidden_tag() }}
+        {{ form.secret.label() }}
+        {{ form.secret() }}
+        {% for error in form.secret.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.submit() }}
+    </form>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Our Menu</h1>
+    <table>
+        {% for food in menu %}
+            <tr>
+                <td>{{ food["name"] }}</td>
+                <td>{{ food["price"] }}</td>
+                <td><a class = "tablelinks" href="{{ url_for('food', menu_id=food['menu_id']) }}">See Details</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

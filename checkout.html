@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1>Restaurant Waluigi</h1>
+
+    <p>You have paid Щ {{ total }}. Thank you for your money.</p>
+    <br />
+    <h1>Invoice</h1>
+    
+    <table>
+        <tr>
+            <td>Billed To</td>
+            <td>Date</td>
+        </tr>
+        
+        <tr>
+            <td>{{ g.user }}</td>
+            <td>{{ today }}</td>
+        </tr>
+
+    </table>
+    <br />
+    <table>
+        <tr>
+            <td>Item</td>
+            <td>Quantity</td>
+            <td>Cost</td>
+            <td>Tax</td>
+            <td>Subtotal</td>
+        </tr>
+                
+            
+        {% for menu_id in cart %}
+            {% if cart[menu_id] > 0 %}
+                <tr>
+                    <td>{{ names[menu_id] }}</td>
+                    <td>{{ cart[menu_id] }}</td>
+                    <td>{{ costs[menu_id] }}</td>
+                    <td>{{ taxes[menu_id] }}</td>
+                    <td>{{ subtotals[menu_id] }}</td>
+                </tr>
+                {% endif %}
+        {% endfor %}
+                
+        <tr>
+            <td>Total</td>
+            <td></td>
+            <td>{{ costTotal }}</td>
+            <td>{{ taxTotal }}</td>
+            <td>Щ {{ total }}</td>
+        </tr>
+    </table>
+    <p><button onclick="window.print()">Print Invoice</button></p>
+    <p><a href="{{ url_for('finishedpurchase') }}">Finished</a></p>
+{% endblock %}
+
+

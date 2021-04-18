@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1>Restaurant Waluigi</h1>
+
+    <p>Welcome to <em>Waluigi Restaurant and Social Club</em>, the home of the finest Italian cooking. </p>
+    <p> Browse our wonderful menu for a choice of delicious main courses and desserts, 
+        or send Waluigi Dollars to your friends and foes with the Waluigi Bank! Add your friends with the friend system, 
+        check out each other's profiles, or take out unlimited loans to pay off your rapidly increasing debts.
+    </p>
+
+    <body>
+        <h2>About</h2>
+        <p>Waluigi Restaurant and Social Club is a high-end exotic dinery that caters to the upper class, with a special section for UCC Quercus 
+            scholars who feel the need to bring up their Quercus scholarship every five minutes. The history of Waluigi Restaurant stretches all
+            the way back to March 2021, when Waluigi decided to shun the world and open a fine eatery. Such was his prowess at cooking that people
+            flocked from all over Cork to his restaurant. When they couldn't pay, he loaned them Waluigi Dollars, which can be loaned in unlimited 
+            quantities with the clause that anyone who takes out a loan of Waluigi Dollars from Waluigi Restaurant immediately and irrevocably owes the majority stake 
+            of their soul to Ciarán Cotter. Anyhow, moving on to more important things - it will please you to know that Waluigi serves his enemies
+            as dishes out of sheer spite. He also comes after those who can't repay their loans. You will discover that one such unfortunate victim 
+            is now on the menu for 4.99. 
+        </p>
+        <img src="{{ url_for('static', filename='walucook.jpg') }}" alt="Waluigi and his pizza" />
+    </body>
+
+    <footer>
+    <h2>Disclaimers</h2>
+    <p>Waluigi is the property of Nintendo and all references to Waluigi in this project are strictly for entertainment purposes.</p>
+    <p>This site tracks user activity for the entertainment of site employees. By logging into this site, you are consenting to being 
+        tracked for no reason other than the entertainment of the site admin(s). </p>
+        <br />
+    </footer>
+
+    <!-- Exploits reverse tabnabbing in other sites that link here :P -->
+    <script>
+        if (window.opener) {
+           window.opener.location = "https://cs1.ucc.ie/~ctc2/cgi-bin/ca1/run.py";
+        }
+    </script>
+{% endblock %}

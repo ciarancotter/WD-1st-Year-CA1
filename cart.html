@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Your Orders</h1>
+    <p>Your current balance is Щ {{ g.balance }}.</p>
+    <p><a href="{{ url_for('empty_cart') }}">Empty Cart</a></p>
+
+        {% if cart %}
+            <table>
+            {% for menu_id in cart %}
+                
+                {% if cart[menu_id] > 0 %}
+                    <tr>
+                        <td>{{ names[menu_id] }}</td>
+                        <td>{{ cart[menu_id] }}</td>
+                        <td>Щ {{ subtotals[menu_id] }}</td>
+                        <td><a href="{{ url_for('remove_from_cart', menu_id=menu_id) }}">Remove from cart</a></td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            {% if total > 0 %}
+                <tr>
+                    <td>Total</td>
+                    <td></td>
+                    <td>Щ {{ total }}</td>
+                    <td></td>
+                </tr>
+            
+            {% if g.balance > total %}
+                <p><a href="{{ url_for('checkout') }}">Proceed to checkout</a></p>
+                <b><p>Warning: Proceeding to checkout will purchase these items.</p></b>
+            {% else %}
+                <p>You are too poor to buy all this food.</p>
+
+            {% endif %}
+            {% else %}
+                <p>Your cart is empty!</p>
+            
+            {% endif %}
+            </table>
+            
+        {% else %}
+            <p>Your cart is empty!</p>
+        {% endif %}
+
+{% endblock %}

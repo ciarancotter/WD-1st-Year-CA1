@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <div>
+        <h1>Bank Management System</h1>
+        <h2>User Transactions</h2>
+        <table>
+
+            <tr>
+                <td>Transaction ID</td>
+                <td>Sender</td>
+                <td>Receiver</td>
+                <td>Amount</td>
+                <td>Date</td>
+            </tr>
+            {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction["transaction_number"] }}</td>
+                    <td>{{ transaction["sender"] }}</td>
+                    <td>{{ transaction["receiver"] }}</td>
+                    <td>{{ transaction["amount"] }}</td>
+                    <td>{{ transaction["time_of_transaction"] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

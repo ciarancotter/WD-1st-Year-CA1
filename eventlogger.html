@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <div>
+        <h1>Event Log System</h1>
+        <h2>Site Log</h2>
+        <p><a href="{{ url_for('siteActivity') }}">Refresh Activity</a></p>
+        <table>
+
+            <tr>
+                <td>Event ID</td>
+                <td>User</td>
+                <td>Action</td>
+                <td>Date</td>
+
+            </tr>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event["event_number"] }}</td>
+                    <td>{{ event["event_subject"] }}</td>
+                    <td>{{ event["event_action"] }}</td>
+                    <td>{{ event["event_time"] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

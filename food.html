@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>{{ food["name"] }}</h1>
+    <p>
+        Price: {{ food["price"] }}
+    </p>
+    <p>
+        {{ food["description"] }}
+    </p>
+    <p>
+        <a href="{{ url_for('add_to_cart', menu_id=food['menu_id']) }}" >Add to cart</a>
+    </p>
+
+{% endblock %}

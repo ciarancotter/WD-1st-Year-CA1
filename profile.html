@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>{{ person }}'s Profile</h1>
+    <br />
+    {% if isUser %}
+    
+    {% if pfp == 'Shaggy' %}
+    <img src="{{ url_for('static', filename='shaggydance.gif') }}" alt="Shaggy" />
+
+    {% elif pfp == 'Wombat' %}
+    <img src="{{ url_for('static', filename='wombat.gif') }}" alt="Wombat" />
+
+    {% elif pfp == 'Popcat' %}
+    <img src="{{ url_for('static', filename='popcat.gif') }}" alt="Popcat" />
+
+    {% elif pfp == 'Fat Monke' %}
+    <img src="{{ url_for('static', filename='monke.gif') }}" alt="Monke" />
+    
+    {% elif pfp == 'Water Monke' %}
+    <img src="{{ url_for('static', filename='watermonke.gif') }}" alt="Monke" />
+    
+    {% elif pfp == 'Dance Monke' %}
+    <img src="{{ url_for('static', filename='monkedance.gif') }}" alt="Monke" />
+
+    {% elif pfp == 'Oogway' %}
+    <img src="{{ url_for('static', filename='oogway.gif') }}" alt="Oogway" />
+
+    {% elif pfp == 'The Shining' %}
+    <img src="{{ url_for('static', filename='theshining.gif') }}" alt="The Shining" />
+
+    {% elif pfp == 'Homer' %}
+    <img src="{{ url_for('static', filename='homer.gif') }}" alt="Homer" />
+
+    {% elif pfp == 'Squidward' %}
+    <img src="{{ url_for('static', filename='squidward.gif') }}" alt="Squidward" />
+    {% endif %}
+
+    <p>{{ bio }}</p>
+
+    {% else %}
+    <p>This user does not exist!</p>
+    {% endif %}
+
+    {% if canEdit %}
+        <td><p><a href="{{ url_for('EditProfile') }}">Edit Your Profile</a></p></td>
+    {% endif %}
+{% endblock %}

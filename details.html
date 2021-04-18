@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Account Details</h1>
+    
+    <div class = "passwordReset">
+        <b><p>Reset Password</p></b>
+        <form action="" method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            {{ form.currentPass.label() }}
+            {{ form.currentPass() }}
+            {% for error in form.currentPass.errors %}
+                {{ error }}
+            {% endfor %}
+            <br />
+            {{ form.hidden_tag() }}
+            {{ form.newPass.label() }}
+            {{ form.newPass() }}
+            {% for error in form.newPass.errors %}
+                {{ error }}
+            {% endfor %}
+            <br />
+            {{ form.hidden_tag() }}
+            {{ form.newPassAgain.label() }}
+            {{ form.newPassAgain() }}
+            {% for error in form.newPassAgain.errors %}
+                {{ error }}
+            {% endfor %}
+            <br />
+            {{ form.submit() }}
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Restaurant Waluigi</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='lect12styles.css') }}" />
+
+        {% if g.user %}
+        
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('menu') }}">Our Menu</a></li>
+            <li><a href="{{ url_for('cart') }}">Cart</a></li>
+            <li><a href="{{ url_for('bankTransfer') }}">Bank</a></li>
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropbtn">My Account</a>
+              <div class="dropdown-content">
+                <a href="{{ url_for('profile', person=g.user) }}">Profile</a>
+                <a href="{{ url_for('details') }}">Details</a>
+                <a href="{{ url_for('friends') }}">Friends</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+              </div>
+            </li>
+        </ul>
+
+        <b><p>Logged in as: {{ g.user }}</p></b>
+      {% elif g.employee %}
+        <ul>
+          <li><a href="{{ url_for('employee_home') }}">Home</a></li>
+          <li><a href="{{ url_for('banksystem') }}">Bank Management</a></li>
+          <li><a href="{{ url_for('siteActivity') }}">Site Activity</a></li>
+          <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">My Account</a>
+            <div class="dropdown-content">
+              <a href="{{ url_for('logout') }}">Logout</a>
+            </div>
+          </li>
+      </ul>
+      <p>Logged in as: {{ g.employee }}</p>
+      {% else %}
+
+    <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('menu') }}">Our Menu</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">Login</a>
+          <div class="dropdown-content">
+	            <a href="{{ url_for('register') }}">Register</a>
+	            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('employee_register') }}">Employee Register</a>
+            <a href="{{ url_for('employee_login') }}">Employee Login</a>
+        
+          </li>
+          </div>
+        </li>
+      </ul>
+
+    {% endif %}
+    </head>
+    <body>
+
+        {% block main_content %}
+        {% endblock %}
+
+    </body>
+</html>
+

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <div class = "login">
+        <h1>Send Waluigi Dollars</h1>
+        <p><a class="bank" href="{{ url_for('refresh_balance') }}">Refresh Balance</a></p>
+        <p><a class="bank"href="{{ url_for('loan') }}">Take out a loan</a></p>
+        <h2>Current Balance: Щ {{ balance }}</h2>
+
+        <form action="" method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            {{ form.recipient.label() }}
+            {{ form.recipient() }}
+            {% for error in form.recipient.errors %}
+                {{ error }}
+            {% endfor %}
+            <br />
+            {{ form.hidden_tag() }}
+            {{ form.amount.label() }}
+            {{ form.amount() }}
+            {% for error in form.amount.errors %}
+                {{ error }}
+            {% endfor %}
+            <br />
+            {{ form.submit() }}
+        </form>
+    </div>
+
+    <br />
+    
+    <div>
+        <table>
+
+            <tr>
+                <td>Transaction ID</td>
+                <td>Sender</td>
+                <td>Receiver</td>
+                <td>Amount</td>
+                <td>Date</td>
+            </tr>
+            {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction["transaction_number"] }}</td>
+                    <td>{{ transaction["sender"] }}</td>
+                    <td>{{ transaction["receiver"] }}</td>
+                    <td>Щ {{ transaction["amount"] }}</td>
+                    <td>{{ transaction["time_of_transaction"] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

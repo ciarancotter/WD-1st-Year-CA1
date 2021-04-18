@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Inbox</h1>
+    <div class = "passwordReset">
+        <form class = "login" action="" method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            {{ form.friend.label() }}
+            {{ form.friend() }}
+            <br>
+            {% for error in form.friend.errors %}
+                {{ error }}
+            {% endfor %}
+            <br />
+            {{ form.submit() }}
+        </form>
+    </div>
+    <br />
+    <h2>Friends</h2>
+    <table>
+        {% for request in friendQueue1 %}
+            <tr>
+                <td>{{ request["sender"] }}</td>
+                <td><a href="{{ url_for('profile', person=request['sender']) }}">Visit Profile</a></td>
+            </tr>
+        {% endfor %}
+        {% for request in friendQueue2 %}
+        <tr>
+            <td>{{ request["receiver"] }}</td>
+            <td><a href="{{ url_for('profile', person=request['receiver']) }}">Visit Profile</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+    <br />
+    <h2>Received Requests</h2>
+    <table>
+
+        <tr>
+            <td>From</td>
+            <td>Accept</td>
+        </tr>
+        {% for request in receivedQueue %}
+            <tr>
+                <td>{{ request["sender"] }}</td>
+                <td><a href="{{ url_for('AddFriend', friend=request['sender']) }}">Add Friend</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br />
+    <h2>Sent Requests</h2>
+    <table>
+        <tr>
+            <td>To</td>
+        </tr>
+        {% for request in sentQueue %}
+            <tr>
+                <td>{{ request["receiver"] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
